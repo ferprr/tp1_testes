@@ -1,4 +1,4 @@
-![Coverage](.github/badges/jacoco.svg)
+![Coverage](.github/badges/coverage.svg)
 
 # Integrantes
 * Etelvina Oliveira
