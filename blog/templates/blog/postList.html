@@ -9,23 +9,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
-  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  
+  <title>Minimalist</title>
 </head>
 <body>
   <div class="pageHeader">
     <h1>Minimalist</h1>
   </div>
 
-  <div class="content container">
+  <div class="contentContainer">
     <div class="row">
         <div class="col-md-8">
             {% for post in posts %}
                 <div class="post">
-                    <div class="date">
-                        <p>published: {{ post.published_date }}</p>
+                    <div class="postTitle">
+                      <h2><a href="{% url 'postDetail' pk=post.pk %}">{{ post.title }}</a></h2>
                     </div>
-                    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                    <p>{{ post.text|linebreaksbr }}</p>
+                    <div class="postSubtitle">
+                      <p class="subtitle"> {{post.subtitle}} <p>
+                    </div>
+                    <p class="date">{{ post.published_date }}</p>
                 </div>
             {% endfor %}
         </div>

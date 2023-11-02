@@ -1,0 +1,46 @@
+*{
+  margin:0;
+  padding:0;
+  border:0;
+}
+
+.pageHeader{
+  margin-top: 0;
+  border-bottom: 1px solid;
+  padding: 5px 30px;
+}
+
+.pageHeader h1{
+  font-family: 'Libre Baskerville', serif;
+}
+
+.post{
+  display: flex;
+  flex-direction: column;
+  padding: 50px 22rem;
+}
+
+.postTitle{
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  font-size: 35px;
+  padding-bottom: 5px;
+}
+
+.postSubtitle{
+  font-family: 'Roboto', sans-serif;
+  color: #6B6B6B;
+  font-size: 22px;
+  padding-bottom: 5px;
+}
+
+.date{
+  color: #6B6B6B;  
+  font-size: 15px;
+}
+
+.postText{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-family: 'Merriweather', serif;
+}
