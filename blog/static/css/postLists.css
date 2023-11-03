@@ -13,9 +13,9 @@
 }
 
 .inputGroupPrepend{
-  position: relative;
-  left: 55rem;
-  top: 0.7rem;
+  position: absolute;
+  left: 70rem;
+  top: 1.5rem;
 }
 
 .btnOutline{
@@ -29,8 +29,8 @@
 .formControl{
   border-bottom: 1px solid;
   position: relative;
-  left: 32rem;
-  top: -0.6rem;
+  left: 35rem;
+  top: 0.8rem;
   width: 20rem;
 }
 
