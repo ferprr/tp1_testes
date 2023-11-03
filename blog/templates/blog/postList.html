@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  
+  <link rel="stylesheet" href="{% static 'css/postLists.css' %}">
+  <title>Minimalist</title>
+</head>
+<body>
+  <div class="pageHeader">
+    <h1><a href="/">Minimalist</a></h1>
+    <div class="searchPost">
+      <form method="GET">
+
+        <div class="inputGroupPrepend">
+        
+        <button class="btnOutline" type="submit" id="buttonAddon1">Buscar</button>
+      
+        </div>
+  
+        <input type="text" class="formControl" name="search" id="search">
+  
+      </form>
+    </div>
+  </div>
+
+  <div class="contentContainer">
+    <div class="row">
+        <div class="col-md-8">
+            {% for post in posts %}
+                <div class="post">
+                    <div class="postTitle">
+                      <h2><a href="{% url 'postDetail' pk=post.pk %}">{{ post.title }}</a></h2>
+                    </div>
+                    <div class="postSubtitle">
+                      <p class="subtitle"> {{post.subtitle}} <p>
+                    </div>
+                    <div class="categories">
+                      {% for categ in post.category.all %}
+                        <p class="category">{{categ}}</p>
+                      {% endfor %}
+                    </div>
+                    <p class="date">{{ post.published_date }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="selectCategory">
+          <h2>Explore por categorias:</h2>
+          <div class="filterCategory">
+            {% for categ in category %}
+              <div class="categ">
+                <p><a href="{% url 'postFilter' id_category=categ.id %}">{{ categ.name }}</a></p>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

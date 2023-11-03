@@ -1,0 +1,97 @@
+*{
+  margin:0;
+  padding:0;
+  border:0;
+}
+
+.pageHeader{
+  margin-top: 0;
+  border-bottom: 1px solid;
+  padding: 5px 30px;
+}
+
+.pageHeader{
+  margin-top: 0;
+  border-bottom: 1px solid;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.inputGroupPrepend{
+  position: absolute;
+  left: 70rem;
+  top: 1.5rem;
+}
+
+.btnOutline{
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  padding: 5px 25px;
+}
+
+.formControl{
+  border-bottom: 1px solid;
+  position: relative;
+  left: 35rem;
+  top: 0.8rem;
+  width: 20rem;
+}
+
+.formControl:focus{
+  box-shadow: 0;
+  border-bottom: 1px solid;
+  outline: 0;
+}
+
+.pageHeader h1 a{
+  font-family: 'Libre Baskerville', serif;
+  text-decoration: none;
+  color: #000;
+}
+
+.post{
+  display: flex;
+  flex-direction: column;
+  padding: 50px 25rem;
+}
+
+.postTitle{
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  font-size: 30px;
+  padding-bottom: 5px;
+}
+
+.postSubtitle{
+  font-family: 'Roboto', sans-serif;
+  color: #6B6B6B;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+.date, .category{
+  color: #6B6B6B;  
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.category{
+  padding-right: 15px;
+}
+
+.postText{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-family: 'Merriweather', serif;
+  color: rgb(68, 67, 67);
+}
+
+.categories{
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
