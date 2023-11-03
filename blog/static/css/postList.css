@@ -10,8 +10,10 @@
   padding: 20px 30px;
 }
 
-.pageHeader h1{
+.pageHeader h1 a{
   font-family: 'Libre Baskerville', serif;
+  text-decoration: none;
+  color: #000;
 }
 
 .contentContainer{

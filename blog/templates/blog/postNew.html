@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/postList.css' %}">
+  <link rel="stylesheet" href="{% static 'css/postNew.css' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
@@ -15,13 +15,15 @@
 </head>
 <body>
   <div class="pageHeader">
-    <h1>Minimalist</h1>
+    <h1><a href="/">Minimalist</a></h1>
   </div>
-  <div>
-    <h2>New post</h2>
-    <form method="POST" class="post-form">{% csrf_token %}
+  <div class="edit">
+    <div class="editPost">
+      <h2>New post</h2>
+    </div>
+    <form method="POST" class="postForm">
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="submit" class="save">Save</button>
     </form>
   </div>
 </body>
