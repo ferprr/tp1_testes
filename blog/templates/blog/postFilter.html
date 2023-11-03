@@ -24,7 +24,7 @@
             {% for post in posts %}
                 <div class="post">
                     <div class="postTitle">
-                      <h2><a href="{% url 'postDetail' pk=post.pk %}">{{ post.title }}</a></h2>
+                      <h2><a href="{% url 'postDetail' pk=post.id %}">{{ post.title }}</a></h2>
                     </div>
                     <div class="postSubtitle">
                       <p class="subtitle"> {{post.subtitle}} <p>

@@ -6,7 +6,8 @@ from django.shortcuts import redirect
 
 def postList(request):
   posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') 
-  return render(request, 'blog/postList.html', {'posts': posts})
+  category = Category.objects.all()
+  return render(request, 'blog/postList.html', {'posts': posts, 'category': category})
 
 def postDetail(request, pk):
   post = get_object_or_404(Post, pk=pk)
@@ -23,5 +24,10 @@ def postNew(request):
           form.save_m2m()
           return redirect('postDetail', pk=post.pk)
   else:
-      form = PostForm()
+      form = PostForm() 
   return render(request, 'blog/postNew.html', {'form': form})
+
+def postFilter(request, id_category):
+  posts = Post.objects.filter(category = id_category)
+  category = Category.objects.all()
+  return render(request, 'blog/postFilter.html', {'posts': posts, 'category': category})
