@@ -3,7 +3,7 @@ name: CI/CD Workflow
 on:
   push:
     branches:
-      - main
+      - dev-fer
 
 jobs:
   build:
@@ -11,30 +11,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
 
-    - name: Create and activate a virtual environment
-      run: python -m venv venv && source venv/bin/activate
-      shell: bash
+      - name: Create and activate a virtual environment
+        run: python -m venv venv && source venv/bin/activate
+        shell: bash
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-    - name: Run tests
-      run: pytest
+      - name: Run tests
+        run: pytest
 
-    - name: Deactivate virtual environment
-      run: deactivate
-      shell: bash
+      - name: Deactivate virtual environment
+        run: deactivate
+        shell: bash
 
-    - name: Upload test results
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-results
-        path: test_results/
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: test_results/
