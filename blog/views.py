@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm
 from django.shortcuts import redirect
 
@@ -20,6 +20,7 @@ def postNew(request):
           post.author = request.user
           post.published_date = timezone.now()
           post.save()
+          form.save_m2m()
           return redirect('postDetail', pk=post.pk)
   else:
       form = PostForm()
