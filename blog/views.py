@@ -7,10 +7,16 @@ from django.shortcuts import redirect
 def postList(request):
   posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') 
   category = Category.objects.all()
+  search = request.GET.get('search')
+  if search:
+    posts = Post.objects.filter(title__icontains = search)
   return render(request, 'blog/postList.html', {'posts': posts, 'category': category})
 
 def postDetail(request, pk):
   post = get_object_or_404(Post, pk=pk)
+  search = request.GET.get('search')
+  if search:
+    posts = Post.objects.filter(title__icontains = search)
   return render(request, 'blog/postDetail.html', {'post': post})
 
 def postNew(request):
@@ -30,4 +36,7 @@ def postNew(request):
 def postFilter(request, id_category):
   posts = Post.objects.filter(category = id_category)
   category = Category.objects.all()
+  search = request.GET.get('search')
+  if search:
+    posts = Post.objects.filter(title__icontains = search)
   return render(request, 'blog/postFilter.html', {'posts': posts, 'category': category})
