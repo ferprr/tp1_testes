@@ -1,22 +1,9 @@
+{% extends 'blog/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/postNews.css' %}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  
-  <title>Minimalist</title>
-</head>
-<body>
-  <div class="pageHeader">
-    <h1><a href="/">Minimalist</a></h1>
-  </div>
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/postNew.css' %}">
+  
   <div class="edit">
     <div class="editPost">
       <h2>New post</h2>
@@ -26,5 +13,4 @@
         <button type="submit" class="save">Save</button>
     </form>
   </div>
-</body>
-</html>
+{% endblock %}

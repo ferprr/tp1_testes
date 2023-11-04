@@ -1,0 +1,171 @@
+*{
+  margin:0;
+  padding:0;
+  border:0;
+}
+
+.pageHeader{
+  margin-top: 0;
+  border-bottom: 1px solid;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.log{
+  position: relative;
+  left: 58rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.log a{
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  padding: 5px 25px;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.inputGroupPrepend{
+  position: relative;
+  left: 41rem;
+  top: 1rem;
+}
+
+.btnOutline{
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  padding: 5px 25px;
+}
+
+.formControl{
+  border-bottom: 1px solid;
+  position: relative;
+  left: 20rem;
+  top: 0rem;
+  width: 20rem;
+}
+
+.formControl:focus{
+  box-shadow: 0;
+  border-bottom: 1px solid;
+  outline: 0;
+}
+
+.pageHeader h1 a{
+  font-family: 'Libre Baskerville', serif;
+  text-decoration: none;
+  color: #000;
+  position: relative;
+  top: 0.5rem;
+}
+
+.contentContainer{
+  padding: 30px 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.post{
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+}
+
+.post .postTitle h2 a{
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.postTitle{
+  padding-bottom: 5px;  
+}
+
+.post .postSubtitle .subtitle{
+  font-family: 'Roboto', sans-serif;
+  color: #6B6B6B;
+  font-size: 16px;
+}
+
+.postSubtitle{
+  padding-bottom: 10px;  
+}
+
+.date{
+  color: #6B6B6B;  
+  font-size: 12.5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.categories{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  color: #6B6B6B;  
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.category{
+  padding-right: 10px;
+}
+
+.col-md-8{
+  width: 40rem;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+}
+
+.selectCategory{
+  position: relative;
+  left: 2rem;
+  padding: 0 40px;
+}
+
+.filterCategory{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 30rem;
+}
+
+.categ{
+  padding: 5px 5px;
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.categ p a{
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
+
+.selectCategory h2{
+  padding-bottom: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btnDefault{
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  padding: 5px 25px;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
