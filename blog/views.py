@@ -70,7 +70,7 @@ def postFilter(request, id_category):
   search = request.GET.get('search')
   if search:
     posts = Post.objects.filter(title__icontains = search)
-  return render(request, 'blog/postFilter.html', {'posts': posts, 'category': category}) #retornar só nova lista de postsList filtrado pela categoria
+  return render(request, 'blog/postList.html', {'posts': posts, 'category': category}) #retornar só nova lista de postsList filtrado pela categoria
 
 @login_required
 def postDraftList(request):

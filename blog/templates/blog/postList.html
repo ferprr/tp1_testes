@@ -1,6 +1,16 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+  <div class="selectCategory">
+    <h2>Explore por categorias:</h2>
+    <div class="filterCategory">
+      {% for categ in category %}
+        <div class="categ">
+          <p><a href="{% url 'postFilter' id_category=categ.id %}">{{ categ.name }}</a></p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
   {% for post in posts %}
     <div class="post">
         <div class="postTitle">
