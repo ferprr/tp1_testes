@@ -7,21 +7,33 @@
 .pageHeader{
   margin-top: 0;
   border-bottom: 1px solid;
-  padding: 5px 30px;
-}
-
-.pageHeader{
-  margin-top: 0;
-  border-bottom: 1px solid;
-  padding: 20px 30px;
+  padding: 15px 30px;
   display: flex;
   flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.log{
+  position: relative;
+  left: 58rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.log a{
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  padding: 5px 25px;
+  text-decoration: none;
+  margin-bottom: 5px;
 }
 
 .inputGroupPrepend{
-  position: absolute;
-  left: 70rem;
-  top: 1.5rem;
+  position: relative;
+  left: 41rem;
+  top: 1rem;
 }
 
 .btnOutline{
@@ -35,8 +47,8 @@
 .formControl{
   border-bottom: 1px solid;
   position: relative;
-  left: 35rem;
-  top: 0.8rem;
+  left: 20rem;
+  top: 0rem;
   width: 20rem;
 }
 
@@ -50,19 +62,27 @@
   font-family: 'Libre Baskerville', serif;
   text-decoration: none;
   color: #000;
+  position: relative;
+  top: 1rem;
+}
+
+.contentContainer{
+  padding: 30px 100px;
+  display: flex;
+  flex-direction: row;
 }
 
 .post{
   display: flex;
   flex-direction: column;
-  padding: 50px 25rem;
+  padding: 10px 18.5rem;
 }
 
 .postTitle{
   font-family: 'Roboto', sans-serif;
   color: #000000;
   font-size: 30px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .postSubtitle{
@@ -94,4 +114,16 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.btnDefault{
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  padding: 5px 15px;
+  text-decoration: none;
+  margin-bottom: 5px;
+  width: 5rem;
+  margin-top: 10px;
 }
