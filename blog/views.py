@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from .forms import RegistrationForm, LoginForm
 
-def login_view(request):
+def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -70,7 +70,7 @@ def postFilter(request, id_category):
   search = request.GET.get('search')
   if search:
     posts = Post.objects.filter(title__icontains = search)
-  return render(request, 'blog/postList.html', {'posts': posts, 'category': category}) #retornar só nova lista de postsList filtrado pela categoria
+  return render(request, 'blog/postFilter.html', {'posts': posts, 'category': category}) #retornar só nova lista de postsList filtrado pela categoria
 
 @login_required
 def postDraftList(request):
@@ -90,6 +90,6 @@ def postRemove(request, pk):
     return redirect('/')
 
 @login_required
-def custom_logout(request):
+def logout(request):
     logout(request)
     return redirect('/')  # Redirect to your home page or any other page after logout
