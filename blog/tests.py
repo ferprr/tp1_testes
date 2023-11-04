@@ -118,33 +118,54 @@ class PostModelTest(TestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_login_form_valid(self):
-        form = LoginForm(data = {'username': 'testUser', 'password': 'password'})
+        form = LoginForm(data = {'username': 'testuser', 'password': 'password'})
         self.assertTrue(form.is_valid())
 
     def test_login_form_invalid(self):
         form = LoginForm(data={'username': 'testuser'})
         self.assertFalse(form.is_valid())
 
-    def test_post_form_valid(self):
+    def test_post_form_post_valid(self):
         form_data = {
             'title': 'Test Title',
             'subtitle': 'Test Subtitle',
+            'category': [self.category.pk],
             'text': 'Test Text',
         }
         form = PostForm(data=form_data)
         self.assertTrue(form.is_valid())
 
-    def test_post_form_invalid(self):
+    def test_post_form_post_empty_title(self):
         form_data = {
             'title': '',
             'subtitle': 'Test Subtitle',
-            'category': 'Test Category',
+            'category': [self.category.pk],
             'text': 'Test Text',
         }
         form = PostForm(data=form_data)
         self.assertFalse(form.is_valid())
 
-    def test_registration_form_valid(self):
+    def test_post_form_post_empty_subtitle(self):
+        form_data = {
+            'title': 'Post Test',
+            'subtitle': '',
+            'category': [self.category.pk],
+            'text': 'Test Text',
+        }
+        form = PostForm(data=form_data)
+        self.assertFalse(form.is_valid())
+    
+    def test_post_form_post_empty_text(self):
+        form_data = {
+            'title': 'Post Test',
+            'subtitle': 'Subtitle Test',
+            'category': 'Test Category',
+            'text': '',
+        }
+        form = PostForm(data=form_data)
+        self.assertFalse(form.is_valid())
+
+    def test_registration_form_user_valid(self):
         form_data = {
             'username': 'user789',
             'email': 'test@example.com',
@@ -154,12 +175,52 @@ class PostModelTest(TestCase):
         form = RegistrationForm(data=form_data)
         self.assertTrue(form.is_valid())
 
-    def test_registration_form_password_mismatch(self):
+    def test_registration_form_user_password_mismatch(self):
         form_data = {
             'username': 'testuser',
             'email': 'test@example.com',
             'password1': 'testpassword123',
             'password2': 'mismatchedpassword',
+        }
+        form = RegistrationForm(data=form_data)
+        self.assertFalse(form.is_valid())
+    
+    def test_registration_form_user_empty_username(self):
+        form_data = {
+            'username': '',
+            'email': 'test@example.com',
+            'password1': 'testpassword123',
+            'password2': 'mismatchedpassword',
+        }
+        form = RegistrationForm(data=form_data)
+        self.assertFalse(form.is_valid())
+
+    def test_registration_form_user_empty_email(self):
+        form_data = {
+            'username': 'testuser',
+            'email': '',
+            'password1': 'testpassword123',
+            'password2': 'mismatchedpassword',
+        }
+        form = RegistrationForm(data=form_data)
+        self.assertFalse(form.is_valid())
+    
+    def test_registration_form_user_empty_password1(self):
+        form_data = {
+            'username': 'testuser',
+            'email': 'test@example.com',
+            'password1': '',
+            'password2': 'mismatchedpassword',
+        }
+        form = RegistrationForm(data=form_data)
+        self.assertFalse(form.is_valid())
+    
+    def test_registration_form_user_empty_password2(self):
+        form_data = {
+            'username': 'testuser',
+            'email': 'test@example.com',
+            'password1': 'mismatchedpassword',
+            'password2': '',
         }
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
@@ -186,6 +247,10 @@ class PostModelTest(TestCase):
     def test_view_url_exists_at_desired_location(self):
       response = self.client.get('/')
       self.assertEqual(response.status_code, 200)
+    
+    def test_view_url_inexistent(self):
+      response = self.client.get('/remove')
+      self.assertEqual(response.status_code, 404)
 
     def test_view_url_accessible_by_name(self):
       response = self.client.get(reverse('postList'))
@@ -194,15 +259,11 @@ class PostModelTest(TestCase):
     def test_view_uses_correct_template_post_list(self):
       response = self.client.get(reverse('postList'))
       self.assertTemplateUsed(response, 'blog/postList.html')
+
+    def test_view_uses_correct_template_post_detail(self):
+      response = self.client.get(reverse('postDetail', kwargs={'pk': 1}))
+      self.assertTemplateUsed(response, 'blog/postDetail.html')
      
-    def test_view_uses_correct_template_post_publish(self):
-      response = self.client.get(reverse('postPublish'))
-      self.assertTemplateUsed(response, 'blog/postList.html')
-
-    def test_view_uses_correct_template_post_remove(self):
-      response = self.client.get(reverse('postRemove'))
-      self.assertTemplateUsed(response, 'blog/postList.html')
-
     def test_view_uses_correct_template_register(self):
       response = self.client.get(reverse('register'))
       self.assertTemplateUsed(response, 'registration/register.html')
