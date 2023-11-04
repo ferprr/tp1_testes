@@ -30,7 +30,7 @@ O sistema oferece as seguintes funcionalidades:
 
 É importante notar que algumas funcionalidades, como a criação, edição e exclusão de artigos, estão disponíveis apenas para usuários autenticados. Usuários não autenticados terão acesso apenas à visualização de artigos.
 
-# Explicação das tecnologias utilizadas
+# Tecnologias utilizadas
 
 - _Python_ com o framework _Django_
 - _SQLite_ para banco de dados
