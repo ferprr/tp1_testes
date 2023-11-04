@@ -135,7 +135,7 @@ class PostModelTest(TestCase):
     def test_postRemove_view_invalid_post(self):
         self.client.login(username='testuser', password='testpassword')
         response = self.client.get(reverse('postRemove', args=[999]))  # Assuming 999 is an invalid post ID
-        self.assertEqual(response.status_code, 302)
+        self.ass(response.status_code, 302)
 
     # def test_login_form_valid(self):
     #     form = LoginForm(data={'username': 'testuser', 'password': 'Test123password'})
