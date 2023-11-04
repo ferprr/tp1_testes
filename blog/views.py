@@ -16,7 +16,7 @@ def login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/')  # Redirect to your home page after login
+                return redirect('/') 
     else:
         form = LoginForm()
 
@@ -28,7 +28,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('/')  # Redirect to your home page after registration
+            return redirect('/')
     else:
         form = RegistrationForm()
 
