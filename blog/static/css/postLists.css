@@ -12,6 +12,10 @@
   flex-direction: row;
 }
 
+.menu{
+  position: absolute;
+}
+
 .inputGroupPrepend{
   position: absolute;
   left: 70rem;

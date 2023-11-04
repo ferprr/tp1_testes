@@ -1,53 +1,31 @@
+{% extends 'blog/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/postDetail.css' %}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
-  <title>Minimalist</title>
-</head>
-<body>
-  <div class="pageHeader">
-    <h1><a href="/">Minimalist</a></h1>
-    <div class="searchPost">
-      <form method="GET">
 
-        <div class="inputGroupPrepend">
-        
-        <button class="btnOutline" type="submit" id="buttonAddon1">Buscar</button>
-      
-        </div>
-  
-        <input type="text" class="formControl" name="search" id="search">
-  
-      </form>
-    </div>
-  </div>
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/postDetail.css' %}">
 
   <div class="post">
-      <div class="postTitle">
-        <h2>{{ post.title }}</h2>
+    <div class="postTitle">
+      <h2>{{ post.title }}</h2>
+    </div>
+    <div class="postSubtitle">
+      <p class="subtitle"> {{post.subtitle}} <p>
+    </div>
+    <div class="categories">
+      {% for categ in post.category.all %}
+        <p class="category">{{categ}}</p>
+      {% endfor %}
+    </div>
+    {% if post.published_date %}
+      <div class="date">
+          {{ post.published_date }}
       </div>
-      <div class="postSubtitle">
-        <p class="subtitle"> {{post.subtitle}} <p>
-      </div>
-      <div class="categories">
-        {% for categ in post.category.all %}
-          <p class="category">{{categ}}</p>
-        {% endfor %}
-      </div>
-      <p class="date">{{ post.published_date }}</p>
-      <div class="postText">
-        <p>{{ post.text|linebreaksbr }}</p>
-      </div>
+    {% else %}
+        <a class="btn btn-default" href="{% url 'postPublish' pk=post.pk %}">Publish</a>
+        <a class="btn btn-default" href="{% url 'postRemove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+    {% endif %}
+    <div class="postText">
+      <p>{{ post.text|linebreaksbr }}</p>
+    </div>
   </div>
-</body>
-</html>
+{% endblock %}
