@@ -33,4 +33,4 @@ jobs:
       - name: Test with unittest
         run: |
           export DJANGO_SETTINGS_MODULE=mysite.settings
-          python -m unittest ./manage.py test blog/tests.py
+          python manage.py test
