@@ -4,6 +4,35 @@ from .models import Post, Category
 from .forms import PostForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate, logout
+from .forms import RegistrationForm, LoginForm
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/')  # Redirect to your home page after login
+    else:
+        form = LoginForm()
+
+    return render(request, 'registration/login.html', {'form': form})
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('/')  # Redirect to your home page after registration
+    else:
+        form = RegistrationForm()
+
+    return render(request, 'registration/register.html', {'form': form})
 
 def postList(request):
   posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') 
@@ -52,10 +81,15 @@ def postDraftList(request):
 def postPublish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
-    return redirect('blog/postDetail.html', pk=pk)
+    return redirect('/')
 
 @login_required
 def postRemove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
-    return redirect('blog/postList.html')
+    return redirect('/')
+
+@login_required
+def custom_logout(request):
+    logout(request)
+    return redirect('/')  # Redirect to your home page or any other page after logout

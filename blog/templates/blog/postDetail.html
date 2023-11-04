@@ -20,9 +20,9 @@
       <div class="date">
           {{ post.published_date }}
       </div>
+      <a class="btn btn-default" href="{% url 'postRemove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
     {% else %}
         <a class="btn btn-default" href="{% url 'postPublish' pk=post.pk %}">Publish</a>
-        <a class="btn btn-default" href="{% url 'postRemove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
     {% endif %}
     <div class="postText">
       <p>{{ post.text|linebreaksbr }}</p>
