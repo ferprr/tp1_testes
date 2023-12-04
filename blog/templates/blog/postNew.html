@@ -1,16 +1,38 @@
-{% extends 'blog/base.html' %}
 {% load static %}
-
-{% block content %}
-  <link rel="stylesheet" href="{% static 'css/postNew.css' %}">
-  
-  <div class="edit">
-    <div class="editPost">
-      <h2>New post</h2>
-    </div>
-    <form method="POST" class="postForm">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save">Save</button>
-    </form>
-  </div>
-{% endblock %}
+<html>
+  <head>
+      <title>Minimalist</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+      <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  
+      <link rel="stylesheet" href="{% static 'css/postNew.css' %}">
+  </head>
+  <body>
+      <div class="pageHeader">
+          <h1><a href="/">Minimalist</a></h1>
+          <div class="log">
+              {% if user.is_authenticated %}
+                  <a href="{% url 'postNew' %}" class="top-menu"> New Post </span></a>
+                  <a href="{% url 'myPosts' pk=user.id %}"> My Posts </a>
+                  <a href="{% url 'logout' %}"> Logout </a>
+              {% else %}
+                  <a href="{% url 'login' %}" class="top-menu"> Login </a>
+              {% endif %}
+          </div>
+      </div>
+      <div class="contentContainer">  
+        <div class="edit">
+          <div class="editPost">
+            <h2>New post</h2>
+          </div>
+          <form method="POST" class="postForm">{% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="save">Save</button>
+          </form>
+        </div>
+   
+      </div>
+    </body>
+</html>

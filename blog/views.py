@@ -3,11 +3,11 @@ from django.utils import timezone
 from .models import Post, Category
 from .forms import PostForm
 from django.shortcuts import redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import login, authenticate, logout
 from .forms import RegistrationForm, LoginForm
 
-def login(request):
+def custom_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -27,7 +27,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request)
+            login(request, user)
             return redirect('/')
     else:
         form = RegistrationForm()
@@ -45,9 +45,12 @@ def postList(request):
 def postDetail(request, pk):
   post = get_object_or_404(Post, pk=pk)
   search = request.GET.get('search')
+  category = Category.objects.all()
+  user = request.user
   if search:
-    posts = Post.objects.filter(title__icontains = search)
-  return render(request, 'blog/postDetail.html', {'post': post})
+    post = Post.objects.filter(title__icontains = search)
+    return render(request, 'blog/postList.html', {'posts': post, 'category': category})
+  return render(request, 'blog/postDetail.html', {'post': post, 'user': user})
 
 @login_required
 def postNew(request):
@@ -70,7 +73,16 @@ def postFilter(request, id_category):
   search = request.GET.get('search')
   if search:
     posts = Post.objects.filter(title__icontains = search)
-  return render(request, 'blog/postFilter.html', {'posts': posts, 'category': category}) #retornar só nova lista de postsList filtrado pela categoria
+  return render(request, 'blog/postList.html', {'posts': posts, 'category': category}) #retornar só nova lista de postsList filtrado pela categoria
+
+def myPosts(request, pk):
+  post = Post.objects.filter(author = pk)
+  category = Category.objects.all()
+  search = request.GET.get('search')
+  if search:
+    post = Post.objects.filter(title__icontains = search)
+    return render(request, 'blog/postList.html', {'posts': post, 'category': category})
+  return render(request, 'blog/postList.html', {'post': post, 'category': category}) #retornar só nova lista de postsList filtrado pela categoria
 
 @login_required
 def postDraftList(request):
@@ -88,6 +100,21 @@ def postRemove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('/')
+
+@login_required
+def postEdit(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('postDetail', pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/postNew.html', {'form': form})
 
 @login_required
 def logout(request):

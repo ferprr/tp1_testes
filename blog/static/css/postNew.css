@@ -32,7 +32,8 @@
 
 .inputGroupPrepend{
   position: relative;
-  left: 41rem;
+  visibility: hidden;
+  left: 410rem;
   top: 1rem;
 }
 
@@ -41,6 +42,7 @@
   color: #fff;
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
+  visibility: hidden;
   padding: 5px 25px;
 }
 

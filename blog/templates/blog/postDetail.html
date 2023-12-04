@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-  <link rel="stylesheet" href="{% static 'css/postDetails.css' %}">
+  <link rel="stylesheet" href="{% static 'css/postDetail.css' %}">
 
   <div class="post">
     <div class="postTitle">
@@ -17,10 +17,14 @@
       {% endfor %}
     </div>
     {% if post.published_date %}
-      <div class="date">
-          {{ post.published_date }}
+      <div class="authorDate">
+        <p class="author"> {{post.author}} <p>
+        <p class="date">{{ post.published_date }}</p>
       </div>
-      <a class="btnDefault" href="{% url 'postRemove' pk=post.pk %}">Excluir Post</a>
+      {% if post.author == user %}
+        <a class="btnDefault" href="{% url 'postEdit' pk=post.pk %}">Editar Post</a>
+        <a class="btnDefault" href="{% url 'postRemove' pk=post.pk %}">Excluir Post</a>
+      {% endif %}
     {% else %}
         <a class="btnDefault" href="{% url 'postPublish' pk=post.pk %}">Publish</a>
     {% endif %}
@@ -29,3 +33,9 @@
     </div>
   </div>
 {% endblock %}
+
+
+/*
+Pesquisa por autor
+Ordenar por data de postagem
+*/
