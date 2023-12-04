@@ -1,10 +1,9 @@
 from django.test import TestCase
-import unittest
 from django.contrib.auth.models import User
-from .models import Category, Post
+from ..models import Category, Post
 from django.urls import reverse
 
-class PostViewTest(unittest.TestCase):
+class PostViewTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username="testuser", password="password")
         self.category = Category.objects.create(name="Technology")
@@ -202,6 +201,3 @@ class PostViewTest(unittest.TestCase):
 
         response = self.client.get(reverse('postList'), {"search":"Post 1 Algorithmns"})    
         self.assertEqual(response.context['posts'].count(), 0)
-
-if __name__ == '__main__':
-    unittest.main()

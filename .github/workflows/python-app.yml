@@ -23,7 +23,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8 pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Test with unittest
+      - name: Run tests with coverage
         run: |
-          export DJANGO_SETTINGS_MODULE=mysite.settings
-          python manage.py test
+          coverage run manage.py test
+
+      - name: Generate coverage report
+        run: |
+          coverage report
