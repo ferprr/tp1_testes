@@ -1,12 +1,15 @@
 from django.test import TestCase
-import unittest
+from unittest.mock import Mock
 from django.contrib.auth.models import User
-from .models import Category, Post
+from ..models import Category, Post
 from django.urls import reverse
 
-class UserViewTest(unittest.TestCase):
+class UserView(TestCase):
+    
     def setUp(self):
+        #self.user = Mock(User.objects.create_user(username="testuser", password="password"))
         self.user = User.objects.create_user(username="testuser", password="password")
+        #self.category = Mock(Category.objects.create(name="Technology"))
         self.category = Category.objects.create(name="Technology")
         self.post = Post.objects.create(
             author=self.user,
@@ -69,6 +72,3 @@ class UserViewTest(unittest.TestCase):
         response = self.client.post('/accounts/login/', {'username':'user1', 'password': 'testpassword123'})
         self.assertRedirects(response, reverse('postList'))
         self.assertEqual(response.status_code, 302)
-
-if __name__ == '__main__':
-    unittest.main()

@@ -1,10 +1,9 @@
 from django.test import TestCase
-import unittest
 from django.contrib.auth.models import User
-from .models import Category, Post
-from .forms import LoginForm, RegistrationForm
+from ..models import Category, Post
+from ..forms import LoginForm, RegistrationForm
 
-class UserFormTest(unittest.TestCase):
+class UserFormTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username="testuser", password="password")
         self.category = Category.objects.create(name="Technology")
@@ -94,6 +93,3 @@ class UserFormTest(unittest.TestCase):
         }
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
-
-if __name__ == '__main__':
-    unittest.main()

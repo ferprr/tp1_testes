@@ -1,9 +1,8 @@
 from django.test import TestCase
-import unittest
 from django.contrib.auth.models import User
-from .models import Category, Post
+from ..models import Category, Post
 
-class PostModelTest(unittest.TestCase):
+class PostModelTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username="testuser", password="password")
         self.category = Category.objects.create(name="Technology")
@@ -77,6 +76,3 @@ class PostModelTest(unittest.TestCase):
         post = Post.objects.get(title="Post 1")
         post.publish()
         self.assertTrue(post.published_date)
-
-if __name__ == '__main__':
-    unittest.main()

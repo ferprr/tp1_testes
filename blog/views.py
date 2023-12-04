@@ -3,7 +3,7 @@ from django.utils import timezone
 from .models import Post, Category
 from .forms import PostForm
 from django.shortcuts import redirect
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from .forms import RegistrationForm, LoginForm
 
