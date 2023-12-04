@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/ferprr/tp1_testes/graph/badge.svg?token=HD1O4NQ8GP)](https://codecov.io/gh/ferprr/tp1_testes)
+[![codecov](https://codecov.io/gh/ferprr/tp1_testes/tree/main/graph/badge.svg)](https://codecov.io/gh/ferprr/tp1_testes)
 
 # Integrantes
 
