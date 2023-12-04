@@ -15,11 +15,11 @@ O sistema oferece as seguintes funcionalidades:
 
 - Autenticação de Usuário:
   Para realizar publicações, o usuário deve estar autenticado no sistema.
-  Se o usuário não possui um login, é possível criar uma conta. Assim, os dados são salvos em um banco de dados
+  Se o usuário não possui um login, é possível criar uma conta. Assim, os dados são salvos em um banco de dados.
 
 - Gerenciamento de Artigos:
   Após o login, o usuário pode criar, editar e publicar artigos.
-  É possível também excluir artigos existentes.
+  Além disso, é possível excluir artigos de sua autoria.
 
 - Filtragem por Categorias:
   Os artigos podem ser filtrados com base em categorias específicas, facilitando a busca por conteúdo relevante.
