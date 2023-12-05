@@ -22,7 +22,7 @@ class PostViewTest(TestCase):
 
     def test_postPublish_view_invalid_post(self):
         self.client.login(username='testuser', password='testpassword')
-        response = self.client.get(reverse('postPublish', args=[999]))  # Assuming 999 is an invalid post ID
+        response = self.client.get(reverse('postPublish', args=[999])) 
         self.assertEqual(response.status_code, 302)
 
     def test_postRemove_view_valid_post(self):
@@ -32,7 +32,7 @@ class PostViewTest(TestCase):
 
     def test_postRemove_view_invalid_post(self):
         self.client.login(username='testuser', password='testpassword')
-        response = self.client.get(reverse('postRemove', args=[999]))  # Assuming 999 is an invalid post ID
+        response = self.client.get(reverse('postRemove', args=[999])) 
         self.assertEqual(response.status_code, 302)
 
     def test_postList_view(self):
@@ -44,7 +44,7 @@ class PostViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_postDetail_view_invalid_post(self):
-        response = self.client.get(reverse('postDetail', args=[999]))  # Assuming 999 is an invalid post ID
+        response = self.client.get(reverse('postDetail', args=[999]))  
         self.assertEqual(response.status_code, 404)
 
     def test_postNew_view_get(self):
