@@ -9,7 +9,7 @@ on:
       - main
 
 before_script:
-  - python3 -m venv venv
+  - python -m venv venv
   - source venv/bin/activate
   - pip install -r requirements.txt
 
@@ -26,7 +26,7 @@ jobs:
       - name: Run tests
         run: |
           export DJANGO_SETTINGS_MODULE=mysite.settings
-          python3 manage.py test blog/tests
+          python manage.py test blog/tests
       - name: Run tests with coverage
         run: |
           coverage run manage.py test
@@ -39,5 +39,5 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       e2e_test:
         run: |
-          - python3 manage.py test blog/tests/e2e
+          - python manage.py test blog/tests/e2e
 
