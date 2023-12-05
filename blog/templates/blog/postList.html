@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-8">
         {% for post in posts %}
-            <div class="post">
+            <div class="post" name="post-{{ post.pk }}">
                 <div class="postTitle">
                   <h2><a href="{% url 'postDetail' pk=post.pk %}">{{ post.title }}</a></h2>
                 </div>
