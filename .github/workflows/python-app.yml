@@ -8,14 +8,14 @@ on:
     branches:
       - main
 
+before_script:
+  - python3 -m venv venv
+  - source venv/bin/activate
+  - pip install -r requirements.txt
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
-  before_script:
-    - python3 -m venv venv
-    - source venv/bin/activate
-    - pip install -r requirements.txt
 
     steps:
       - uses: actions/checkout@v3
