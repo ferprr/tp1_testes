@@ -5,11 +5,8 @@ from ..models import Category, Post
 from django.urls import reverse
 
 class UserView(TestCase):
-    
     def setUp(self):
-        #self.user = Mock(User.objects.create_user(username="testuser", password="password"))
         self.user = User.objects.create_user(username="testuser", password="password")
-        #self.category = Mock(Category.objects.create(name="Technology"))
         self.category = Category.objects.create(name="Technology")
         self.post = Post.objects.create(
             author=self.user,
