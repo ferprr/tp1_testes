@@ -42,4 +42,4 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: e2e Tests
         run: |
-          - python manage.py test blog/tests/e2e
+          python manage.py test blog/tests/e2e
