@@ -40,7 +40,6 @@ jobs:
         uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      e2e_test:
+      - name: e2e Tests
         run: |
           - python manage.py test blog/tests/e2e
-
