@@ -12,20 +12,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+  before_script:
+    - python3 -m venv venv
+    - source venv/bin/activate
+    - pip install -r requirements.txt
+
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
           python-version: "3.10"
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run tests
         run: |
           export DJANGO_SETTINGS_MODULE=mysite.settings
-          python manage.py test
+          python3 manage.py test blog/tests
       - name: Run tests with coverage
         run: |
           coverage run manage.py test
@@ -36,4 +37,7 @@ jobs:
         uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      e2e_test:
+        run: |
+          - python3 manage.py test blog/tests/e2e
 
