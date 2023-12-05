@@ -30,11 +30,6 @@ jobs:
         run: |
           export DJANGO_SETTINGS_MODULE=mysite.settings
           python manage.py test blog/tests
-      - name: e2e Tests
-        run: |
-          python manage.py runserver
-          python manage.py test blog/tests/e2e
-          pkill -f "python manage.py runserver"
       - name: Run tests with coverage
         run: |
           coverage run manage.py test

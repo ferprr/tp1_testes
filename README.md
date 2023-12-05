@@ -51,3 +51,13 @@ O sistema oferece as seguintes funcionalidades:
 ### Interface
 
     localhost:8000
+
+### Testes de Sistema 
+
+Para executar os testes e2e, inicie o servidor
+
+    phyton3 manage.py runserver
+
+e execute o seguinte comando em outro terminal:
+
+    python3 manage.py test blog/tests/e2e
