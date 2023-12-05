@@ -8,11 +8,6 @@ on:
     branches:
       - main
 
-before_script:
-  - python -m venv venv
-  - source venv/bin/activate
-  - pip install -r requirements.txt
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,6 +18,14 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Create Virtual Env
+        run: |
+          python -m venv venv
+          source venv/bin/activate
       - name: Run tests
         run: |
           export DJANGO_SETTINGS_MODULE=mysite.settings
